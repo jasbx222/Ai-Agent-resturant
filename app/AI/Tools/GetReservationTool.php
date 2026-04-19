@@ -4,6 +4,7 @@ namespace App\AI\Tools;
 
 use App\Models\Reservation;
 use Illuminate\Contracts\JsonSchema\JsonSchema;
+use Illuminate\Support\Facades\Log;
 use Laravel\Ai\Contracts\Tool;
 use Laravel\Ai\Tools\Request;
 
@@ -16,6 +17,7 @@ class GetReservationTool implements Tool
 
     public function handle(Request $request): string
     {
+        Log::info('get reversation working !');
         $phone = $request['phone'] ?? null;
 
         if (! $phone) {
