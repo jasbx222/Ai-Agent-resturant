@@ -5,6 +5,8 @@ namespace App\Services;
 use App\Repositories\ReservationRepository;
 use Carbon\Carbon;
 use Carbon\CarbonPeriod;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 
 class ReservationService
 {
@@ -121,10 +123,10 @@ class ReservationService
     // ── 6. إرسال بريد التأكيد ────────────────────────────────────
     if ($reservation->email) {
         try {
-            \Mail::to($reservation->email)
+            Mail::to($reservation->email)
                 ->send(new \App\Mail\ReservationConfirmedMail($reservation));
         } catch (\Exception $e) {
-            \Log::warning('فشل إرسال بريد التأكيد: ' . $e->getMessage());
+            Log::warning('فشل إرسال بريد التأكيد: ' . $e->getMessage());
         }
     }
 

@@ -6,6 +6,7 @@ use App\AI\Tools\GetMenuTool;
 use App\AI\Tools\GetDishDetailTool;
 use App\AI\Tools\CheckAvailabilityTool;
 use App\AI\Tools\CreateReservationTool;
+use App\AI\Tools\GetReservationTool;
 use App\AI\Tools\GetUserPreferencesTool;
 use App\Services\SettingsService;
 use Laravel\Ai\Attributes\MaxTokens;
@@ -72,6 +73,12 @@ public function instructions(): Stringable|string
 - إذا طلب الضيف ترشيحاً، فابني الترشيح فقط على الأطباق المسترجعة من الأدوات.
 
 قواعد الحجز:
+قواعد الاستعلام عن الحجز:
+- إذا طلب الضيف معرفة أو عرض أو التحقق من حجزه:
+  - وإذا ذكر رقم الهاتف:
+    استدعي مباشرة GetReservationTool
+  - لا تقومي بالإجابة بنفسك إطلاقاً
+  - انتظري نتيجة الأداة ثم اعرضي البيانات للضيف بشكل واضح
 - إذا طلب الضيف الحجز، فاستخرجي بيانات الحجز من كلامه.
 - استخدمي فقط هذه الحقول للحجز:
   name
@@ -163,6 +170,7 @@ PROMPT;
             GetDishDetailTool::class,
             CheckAvailabilityTool::class,
             CreateReservationTool::class,
+            GetReservationTool::class
             // GetUserPreferencesTool::class,
         ];
     }
