@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Tajawal:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  /* ── Backgrounds ── */
+  --bg-base      : #080808;   /* أعمق خلفية — body */
+  --bg-primary   : #0F0F0F;   /* خلفية الصفحات */
+  --bg-secondary : #161616;   /* خلفية الكروت */
+  --bg-elevated  : #1E1E1E;   /* modals, dropdowns */
+  --bg-hover     : #242424;   /* hover state */
+
+  /* ── Gold Palette ── */
+  --gold-dim     : #8A6D2F;   /* subtle accents */
+  --gold-mid     : #C9A84C;   /* primary brand color */
+  --gold-bright  : #E2C97E;   /* hover / active */
+  --gold-glow    : rgba(201, 168, 76, 0.12);  /* glow effect */
+  --gold-border  : rgba(201, 168, 76, 0.20);  /* borders */
+  --gold-border-hover: rgba(201, 168, 76, 0.45);
+
+  /* ── Text ── */
+  --text-primary  : #F0EBE0;  /* cream white — headings */
+  --text-secondary: #A89880;  /* مuted — body text */
+  --text-muted    : #5C5248;  /* hints, placeholders */
+  --text-gold     : #C9A84C;  /* gold text */
+
+  /* ── Semantic ── */
+  --success : #4A9B6F;
+  --warning : #C9A84C;  /* same as gold */
+  --danger  : #9B4A4A;
+  --info    : #4A6F9B;
+
+  /* ── Surfaces ── */
+  --glass-bg     : rgba(255, 255, 255, 0.03);
+  --glass-border : rgba(255, 255, 255, 0.06);
+  --overlay      : rgba(0, 0, 0, 0.85);
+
+  /* ── Typography ── */
+  --font-display : 'Amiri', serif;       /* عناوين كبيرة، اسم المطعم */
+  --font-body    : 'Tajawal', sans-serif; /* كل النصوص */
+  --font-mono    : 'JetBrains Mono', monospace; /* لوحة التحكم فقط */
+
+  /* ── Typography Scale ── */
+  --text-xs   : 0.75rem;   /* 12.75px */
+  --text-sm   : 0.875rem;  /* 14.875px */
+  --text-base : 1rem;      /* 17px */
+  --text-lg   : 1.176rem;  /* 20px */
+  --text-xl   : 1.412rem;  /* 24px */
+  --text-2xl  : 1.765rem;  /* 30px */
+  --text-3xl  : 2.353rem;  /* 40px */
+  --text-hero : clamp(2.8rem, 6vw, 5.5rem);
+
+  /* ── Spacing ── */
+  --space-1  : 4px;
+  --space-2  : 8px;
+  --space-3  : 12px;
+  --space-4  : 16px;
+  --space-5  : 20px;
+  --space-6  : 24px;
+  --space-8  : 32px;
+  --space-10 : 40px;
+  --space-12 : 48px;
+  --space-16 : 64px;
+  --space-20 : 80px;
+  --space-24 : 96px;
+  --space-32 : 128px;
+
+  /* ── BORDER RADIUS ── */
+  --radius-sm  : 6px;
+  --radius-md  : 10px;
+  --radius-lg  : 16px;
+  --radius-xl  : 24px;
+  --radius-full: 9999px;
+
+  /* ── SHADOWS & GLOW ── */
+  --shadow-sm  : 0 1px 3px rgba(0,0,0,0.4);
+  --shadow-md  : 0 4px 16px rgba(0,0,0,0.5);
+  --shadow-lg  : 0 8px 32px rgba(0,0,0,0.6);
+  --shadow-gold: 0 0 24px rgba(201,168,76,0.15);
+  --shadow-gold-strong: 0 0 40px rgba(201,168,76,0.25);
+
+  /* ── ANIMATIONS ── */
+  --duration-fast   : 150ms;
+  --duration-normal : 250ms;
+  --duration-slow   : 400ms;
+  --ease-default    : cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-spring     : cubic-bezier(0.34, 1.56, 0.64, 1);
+}
