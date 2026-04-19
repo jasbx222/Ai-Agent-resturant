@@ -15,48 +15,41 @@ class GetReservationTool implements Tool
         return 'Get reservation details using customer phone number.';
     }
 
-    public function handle(Request $request): string
-    {
-        Log::info('get reversation working !');
-        $phone = $request['phone'] ?? null;
+public function handle(Request $request): string
+{
+    $phone = $request['phone'] ?? null;
 
-        if (! $phone) {
-            return json_encode([
-                'success' => false,
-                'error' => 'Phone number is required.',
-            ], JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
-        }
-
-        $reservation = Reservation::where('phone', $phone)
-            ->latest()
-            ->first();
-
-        if (! $reservation) {
-            return json_encode([
-                'success' => false,
-                'error' => 'Reservation not found.',
-            ], JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
-        }
-
+    if (! $phone) {
         return json_encode([
-            'success' => true,
-            'item' => [
-                'id' => $reservation->id,
-                'name' => $reservation->name,
-                'email' => $reservation->email,
-                'phone' => $reservation->phone,
-                'party_size' => $reservation->party_size,
-                'date' => optional($reservation->date)->format('Y-m-d'),
-                'time_slot' => $reservation->time_slot,
-                'status' => $reservation->status,
-                'special_requests' => $reservation->special_requests,
-                'notes' => $reservation->notes,
-                'confirmed_at' => optional($reservation->confirmed_at)?->format('Y-m-d H:i:s'),
-                'cancelled_at' => optional($reservation->cancelled_at)?->format('Y-m-d H:i:s'),
-                'cancellation_reason' => $reservation->cancellation_reason,
-            ],
-        ], JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
+            'success' => false,
+            'error' => 'Phone number is required.',
+        ]);
     }
+
+    // 🔥 تنظيف الرقم (أهم خطوة)
+    $phone = preg_replace('/\D/', '', $phone); // حذف أي شيء غير رقم
+
+    // قص الرقم إذا صار طويل (مثلاً أكثر من 11 رقم)
+    if (strlen($phone) > 11) {
+        $phone = substr($phone, 0, 11);
+    }
+
+    $reservation = \App\Models\Reservation::where('phone', $phone)
+        ->latest()
+        ->first();
+
+    if (! $reservation) {
+        return json_encode([
+            'success' => false,
+            'error' => 'Reservation not found.',
+        ]);
+    }
+
+    return json_encode([
+        'success' => true,
+        'item' => $reservation,
+    ]);
+}
 
     public function schema(JsonSchema $schema): array
     {
