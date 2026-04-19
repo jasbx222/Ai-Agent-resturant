@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Box, Container, IconButton, Avatar, Menu, MenuItem } from '@mui/material';
 import { Link, usePage, router } from '@inertiajs/react';
-import SamaWidget from '@/Components/SamaWidget';
+import SamaWidget from '@/components/SamaWidget';
 
 export default function PublicLayout({ children }: { children: React.ReactNode }) {
   const { auth } = usePage().props as any;
