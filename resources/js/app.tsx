@@ -2,7 +2,7 @@ import '../css/app.css';
 import { createRoot } from 'react-dom/client';
 import { createInertiaApp } from '@inertiajs/react';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
-import { RtlProvider } from '@/Components/RtlProvider';
+import { RtlProvider } from './components/RtlProvider';
 import { StyledEngineProvider, CssBaseline } from '@mui/material';
 
 const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'مائدة الشيف';
